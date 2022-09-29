@@ -28,14 +28,21 @@ def write_csv(data, filepath):
         write.writerows(data)
 
 
+if len(sys.argv) < 3:
+    print("Nie podano ścieżki pliku wejściowego lub wyjściowego.\n"
+          "Działanie programu zakończone.")
+    sys.exit()
+
 # import data from *.csv file - filepath passed by user in argv[1]
 source = sys.argv[1]
 
 if os.path.exists(source) is False:
-    print(f"Plik {source} nie istnieje.")
+    print(f"Plik {source} nie istnieje.\n"
+          "Działanie programu zakończone.")
     sys.exit()
 elif source[-4:] != ".csv":
-    print(f"Podana ścieżka {source} nie jest plikiem formatu .csv.")
+    print(f"Podana ścieżka {source} nie jest plikiem formatu .csv.\n"
+          "Działanie programu zakończone.")
     sys.exit()
 
 csv_file = csv.reader(open(source))
